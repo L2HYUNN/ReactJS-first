@@ -20,6 +20,14 @@
   <script>
     const root = document.querySelector("#root");
     const span = React.createElement("span", { id: "new-span" }, "Hello");
-    ReactDOM.render(span, root);
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("clicked"),
+      },
+      "Click Me"
+    );
+    const container = React.createElement("div", null, [span, btn]);
+    ReactDOM.render(container, root);
   </script>
 </html>
