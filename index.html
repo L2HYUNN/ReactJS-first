@@ -22,22 +22,15 @@
   <script type="text/babel">
     const root = document.querySelector("#root");
 
-    let counter = 0;
-
-    function render() {
-      ReactDOM.render(<Container />, root);
+    function App() {
+      const [counter, modifier] = useState(0);
+      return (
+        <div>
+          <h3 id="title">Total Clicks: 0</h3>
+          <button>Click Me</button>
+        </div>
+      );
     }
-
-    function countUp() {
-      counter += 1;
-      render();
-    }
-    const Container = () => (
-      <div>
-        <h3 id="title">Total Clicks: {counter}</h3>
-        <button onClick={countUp}>Click Me</button>
-      </div>
-    );
-    render();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
