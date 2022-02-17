@@ -20,10 +20,11 @@
   ></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function Btn(props) {
-      console.log(props);
+    function Btn({ name, changeValue }) {
+      console.log(name, "was rendered");
       return (
         <button
+          onClick={changeValue}
           style={{
             border: 0,
             borderRadius: 10,
@@ -32,15 +33,18 @@
             backgroundColor: "tomato",
           }}
         >
-          {props.name}
+          {name}
         </button>
       );
     }
+    const MemorizedBtn = React.memo(Btn);
     function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
       return (
         <div>
-          <Btn name="Save" type="button" />
-          <Btn name="Exit" type="button" />
+          <MemorizedBtn name={value} type="button" changeValue={changeValue} />
+          <MemorizedBtn name="Exit" type="button" />
         </div>
       );
     }
