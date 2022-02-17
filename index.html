@@ -18,6 +18,7 @@
     src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
     crossorigin
   ></script>
+  <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function Btn({ name, changeValue }) {
@@ -38,6 +39,9 @@
       );
     }
     const MemorizedBtn = React.memo(Btn);
+    MemorizedBtn.propTypes = {
+      name: PropTypes.string.isRequired,
+    };
     function App() {
       const [value, setValue] = React.useState("Save Changes");
       const changeValue = () => setValue("Revert Changes");
